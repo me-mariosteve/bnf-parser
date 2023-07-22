@@ -1,7 +1,7 @@
 CC = gcc
 override CFLAGS += -Wall -Wpedantic -Wextra -Wno-unused
 
-LIBS = BNF.o
+LIBS = BNF.o utils.o
 
 all: $(LIBS)
 
