@@ -8,3 +8,6 @@ all: $(LIBS)
 %.o: %.c
 	$(CC) $(CFLAGS) -o $(@) -c $(^)
 
+clean:
+	rm -f $(LIBS)
+
