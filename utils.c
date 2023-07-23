@@ -20,3 +20,12 @@ void *xrealloc(void *ptr, size_t size) {
 	return ptr;
 }
 
+void *xreallocarray(void *ptr, size_t nmemb, size_t size) {
+	ptr = reallocarray(ptr, nmemb, size);
+	if (ptr == NULL) {
+		perror("reallocarray");
+		exit(EXIT_FAILURE);
+	}
+	return ptr;
+}
+
