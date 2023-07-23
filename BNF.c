@@ -113,6 +113,7 @@ int BNF_ParseTerm(BNF_Symbol *const dst, BNF_Context *c) {
 	if (c->len < 2 || c->str[0] != '"') {
 		return 0;
 	}
+	c->i++;
 	dst->is_term = true;
 	dst->sym = xmalloc(0);
 	dst->size = 0;
@@ -144,6 +145,9 @@ int BNF_ParseNonTerm(BNF_Symbol *const dst, BNF_Context *c) {
 	if (c->len < 2 || c->str[c->i] != '<') {
 		return 0;
 	}
+	//BNF_TRACE("%zu\n", c->i);
+	c->i++;
+	//BNF_TRACE("%zu\n", c->i);
 	dst->is_term = false;
 	dst->sym = xmalloc(0);
 	dst->size = 0;
