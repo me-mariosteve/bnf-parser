@@ -8,6 +8,8 @@ all: $(LIBS)
 %.o: %.c
 	$(CC) $(CFLAGS) -o $(@) -c $(^)
 
+.PHONY: clean
+
 clean:
 	rm -f $(LIBS)
 
