@@ -43,7 +43,7 @@ void BNF_Skip(BNF_Context *c, char flags) {
 
 int BNF_ParseGrammar(BNF_Grammar *const dst, BNF_Context *c) {
 	_BNF_check_not_NULL(dst);
-	dst->rules = xmalloc(0);
+	dst->rules = NULL;
 	dst->size = 0;
 	while (c->i < c->len) {
 		dst->size++;
@@ -84,6 +84,8 @@ int BNF_ParseRule(BNF_Rule *const dst, BNF_Context *c) {
 
 int BNF_ParseExpr(BNF_Expr *const dst, BNF_Context *c) {
 	_BNF_check_not_NULL(dst);
+	dst->size = 0;
+	dst->sym_l = NULL;
 	while (c->i < c->len) {
 		BNF_Skip(c, BNF_SKIP_WHITESPACE|BNF_SKIP_COMMENT);
 		dst->size++;
@@ -115,7 +117,7 @@ int BNF_ParseTerm(BNF_Symbol *const dst, BNF_Context *c) {
 	}
 	c->i++;
 	dst->is_term = true;
-	dst->sym = xmalloc(0);
+	dst->sym = NULL;
 	dst->size = 0;
 	while (c->i < c->len && c->str[c->i] != '"') {
 		char next;
