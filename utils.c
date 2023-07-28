@@ -13,7 +13,7 @@ void *xmalloc(size_t size) {
 
 void *xrealloc(void *ptr, size_t size) {
 	ptr = realloc(ptr, size);
-	if (ptr == NULL) {
+	if (ptr == NULL && errno) {
 		perror("realloc");
 		exit(EXIT_FAILURE);
 	}
@@ -22,7 +22,7 @@ void *xrealloc(void *ptr, size_t size) {
 
 void *xreallocarray(void *ptr, size_t nmemb, size_t size) {
 	ptr = reallocarray(ptr, nmemb, size);
-	if (ptr == NULL) {
+	if (ptr == NULL && errno) {
 		perror("reallocarray");
 		exit(EXIT_FAILURE);
 	}
